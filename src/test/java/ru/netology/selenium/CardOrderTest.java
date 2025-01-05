@@ -58,10 +58,10 @@ public class CardOrderTest {
         driver.findElement(By.cssSelector("input[name='phone']")).sendKeys("+71234567890");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector("[type='button']")).click();
-        List<WebElement> subtexts = driver.findElements(By.cssSelector("span > [class = 'input__sub']"));
+        WebElement subtext = driver.findElement(By.cssSelector("[data-test-id='name'].input_invalid .input__sub"));
 
-        assertTrue(subtexts.get(0).isDisplayed());
-        assertEquals("Поле обязательно для заполнения", subtexts.get(0).getText().trim());
+        assertTrue(subtext.isDisplayed());
+        assertEquals("Поле обязательно для заполнения", subtext.getText().trim());
     }
 
     @Test
@@ -70,10 +70,10 @@ public class CardOrderTest {
         driver.findElement(By.cssSelector("input[name='phone']")).sendKeys("+71234567890");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector("[type='button']")).click();
-        List<WebElement> subtexts = driver.findElements(By.cssSelector("span > [class = 'input__sub']"));
+        WebElement subtext = driver.findElement(By.cssSelector("[data-test-id='name'].input_invalid .input__sub"));
 
-        assertTrue(subtexts.get(0).isDisplayed());
-        assertEquals("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.", subtexts.get(0).getText().trim());
+        assertTrue(subtext.isDisplayed());
+        assertEquals("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.", subtext.getText().trim());
     }
 
     @Test
@@ -81,10 +81,10 @@ public class CardOrderTest {
         driver.findElement(By.cssSelector("input[name='name']")).sendKeys("Иван Иванов");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector("[type='button']")).click();
-        List<WebElement> subtexts = driver.findElements(By.cssSelector("span > [class = 'input__sub']"));
+        WebElement subtext = driver.findElement(By.cssSelector("[data-test-id='phone'].input_invalid .input__sub"));
 
-        assertTrue(subtexts.get(1).isDisplayed());
-        assertEquals("Поле обязательно для заполнения", subtexts.get(1).getText().trim());
+        assertTrue(subtext.isDisplayed());
+        assertEquals("Поле обязательно для заполнения", subtext.getText().trim());
     }
 
     @Test
@@ -93,10 +93,10 @@ public class CardOrderTest {
         driver.findElement(By.cssSelector("input[name='phone']")).sendKeys("+7укенгшщзьт");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector("[type='button']")).click();
-        List<WebElement> subtexts = driver.findElements(By.cssSelector("span > [class = 'input__sub']"));
+        WebElement subtext = driver.findElement(By.cssSelector("[data-test-id='phone'].input_invalid .input__sub"));
 
-        assertTrue(subtexts.get(0).isDisplayed());
-        assertEquals("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.", subtexts.get(1).getText().trim());
+        assertTrue(subtext.isDisplayed());
+        assertEquals("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.", subtext.getText().trim());
     }
 
     @Test
@@ -104,7 +104,7 @@ public class CardOrderTest {
         driver.findElement(By.cssSelector("input[name='name']")).sendKeys("Иван Иванов");
         driver.findElement(By.cssSelector("input[name='phone']")).sendKeys("+71234567890");
         driver.findElement(By.cssSelector("[type='button']")).click();
-        WebElement notCLickedCheckbox = driver.findElement(By.cssSelector(".input_invalid"));
+        WebElement notCLickedCheckbox = driver.findElement(By.cssSelector("[data-test-id='agreement'].input_invalid .checkbox__text"));
 
         assertTrue(notCLickedCheckbox.isDisplayed());
         assertEquals("Я соглашаюсь с условиями обработки и использования моих персональных данных и разрешаю сделать запрос в бюро кредитных историй", notCLickedCheckbox.getText().trim());
@@ -113,10 +113,10 @@ public class CardOrderTest {
     @Test
     void nothingFilled() {
         driver.findElement(By.cssSelector("[type='button']")).click();
-        List<WebElement> subtexts = driver.findElements(By.cssSelector("span > [class = 'input__sub']"));
+        WebElement subtext = driver.findElement(By.cssSelector("[data-test-id='name'].input_invalid .input__sub"));
 
-        assertTrue(subtexts.get(0).isDisplayed());
-        assertEquals("Поле обязательно для заполнения", subtexts.get(0).getText().trim());
+        assertTrue(subtext.isDisplayed());
+        assertEquals("Поле обязательно для заполнения", subtext.getText().trim());
     }
 
 
